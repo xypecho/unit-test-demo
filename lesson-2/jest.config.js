@@ -23,7 +23,7 @@ module.exports = {
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: null,
 
-  // The directory where Jest should output its coverage files
+  // 代码测试覆盖率放在哪个文件夹下面，默认是放在coverage文件夹下
   coverageDirectory: "coverage",
 
   // An array of regexp pattern strings used to skip coverage collection

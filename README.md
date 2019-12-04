@@ -10,14 +10,14 @@ npx jest --init // 暴露jest配置项
 npm jest --coverage // 代码覆盖率，执行此命令后会在当前目录下生成一个coverage文件夹，打开里面的lcov-report里面index.html即可看到覆盖率
 ```
 
-### lesson-3 匹配器
-
 每次改动代码都需要手动执行`npm run test`,如果希望可以热更新的话可以在`package.json`文件做如下改动：
 ```
   "scripts": {
     "test": "jest --watchAll"
   },
 ```
+
+匹配器
 
 ```
 toBe // 使用 Object.is 来实现精确匹配，例如expect(10).toBe(10)，相当于Object.is(10,10)
@@ -27,3 +27,17 @@ toEqual // 可以用来匹配对象内容是否相等,例如 const a = { name: '
 toBeNull // 看返回值是否===null, expect(undefined).toBeNull() 返回false
 ```
 [更多匹配器查看这里](https://www.jianshu.com/p/ef520f3aba00)
+[官方文档](https://jestjs.io/docs/en/expect)
+
+### lesson-3 测试异步函数
+
+```
+test('测试ajax数据', (done) => {
+    fetchData((data) => {
+        expect(data).toEqual({
+            status: "3.0.12"
+        })
+        done(); // 在ajax完成后调用done函数，不调用的话不管什么情况都会返回成功
+    })
+})
+```

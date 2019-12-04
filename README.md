@@ -26,11 +26,13 @@ toEqual // 可以用来匹配对象内容是否相等,例如 const a = { name: '
 
 toBeNull // 看返回值是否===null, expect(undefined).toBeNull() 返回false
 ```
-[更多匹配器查看这里](https://www.jianshu.com/p/ef520f3aba00)
+[更多匹配器查看这里](https://www.jianshu.com/p/ef520f3aba00) 
+
 [官方文档](https://jestjs.io/docs/en/expect)
 
 ### lesson-3 测试异步函数
 
+更多案例看`lesson-3`文件夹下的`fetchData.test.js`
 ```
 test('测试ajax数据', (done) => {
     fetchData((data) => {

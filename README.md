@@ -87,7 +87,7 @@ describe('测试减少相关的方法', () => {
 })
 ```
 
-### lesson-5 在jest中mock
+### lesson-5 在jest中mock数据
 
 为了不改动项目源代码，我们可以利用jest来mock一些数据或者函数。
 ```
@@ -104,16 +104,24 @@ test('测试回调函数有没有被调用两次', () => {
     console.log(func.mock)
     expect(func.mock.calls.length).toBe(2);
 }) 
-
-// test.only表示如果当前有多个测试用例的话，只测这一个
-test.only('测试only', () => {
-    const func = jest.fn();
-    func.mockReturnValueOnce('hello'); // 手动给mock的函数增加返回值
-    runCallback(func);
-    runCallback(func);
-    runCallback(func);
-    console.log(func.mock)
-    expect(func.mock.calls.length).toBe(3);
-}) 
 ```
 
+### lesson-6 屏幕快照
+
+```
+// 如果是传统方法，demo.js里面的generateConfig方法每增加一个参数，我们这边就要跟着增加
+test('测试对象返回的参数是否正确', () => {
+    expect(generateConfig()).toEqual({
+        serve: 'http://localhost',
+        port: 8080,
+        domain: 'localhost'
+    })
+})
+
+// 优化版,利用屏幕快照，toMatchSnapshot()
+// 会在当前文件夹下创建一个名字叫‘__snapshots__’的文件夹，里面存放这参数的快照
+// 屏幕快照的主要使用场景为：测试配置文件
+test.only("测试屏幕快照", () => {
+    expect(generateConfig()).toMatchSnapshot();
+})
+```

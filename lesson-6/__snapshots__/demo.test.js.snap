@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`测试new Date() 1`] = `
+Object {
+  "domain": "localhost",
+  "port": 8080,
+  "serve": "http://localhost",
+  "time": Any<Date>,
+}
+`;
+
+exports[`测试屏幕快照 1`] = `
+Object {
+  "domain": "localhost",
+  "port": 8080,
+  "serve": "http://localhost",
+  "time": 2019-12-05T14:12:04.743Z,
+}
+`;

@@ -108,6 +108,8 @@ test('测试回调函数有没有被调用两次', () => {
 
 ### lesson-6 屏幕快照
 
+屏幕快照的主要使用场景为：测试配置文件
+
 ```
 // 如果是传统方法，demo.js里面的generateConfig方法每增加一个参数，我们这边就要跟着增加
 test('测试对象返回的参数是否正确', () => {
@@ -120,8 +122,20 @@ test('测试对象返回的参数是否正确', () => {
 
 // 优化版,利用屏幕快照，toMatchSnapshot()
 // 会在当前文件夹下创建一个名字叫‘__snapshots__’的文件夹，里面存放这参数的快照
-// 屏幕快照的主要使用场景为：测试配置文件
 test.only("测试屏幕快照", () => {
     expect(generateConfig()).toMatchSnapshot();
 })
+```
+
+### lesson-7 在jest中mock接口请求
+
+利用jest的mock来测试接口，从而避免请求真实的线上接口。
+
+在`.test.js`文件所在的同级文件夹下创建一个`__mocks__`文件夹，在这个里面编写mock的接口。
+
+```
+jest.mock('./demo'); // 这段代表让jest来mockdemo文件夹里面export的函数
+// jest.unmock('./demo'); // 取消模拟
+
+// 如果不想使用mock来模拟某个函数，可以使用jest.requireActual()
 ```

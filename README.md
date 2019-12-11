@@ -139,3 +139,24 @@ jest.mock('./demo'); // 这段代表让jest来mockdemo文件夹里面export的�
 
 // 如果不想使用mock来模拟某个函数，可以使用jest.requireActual()
 ```
+
+### lesson-8 在jest中测试定时器
+
+jest 提供了mock timer 的功能，不要再使用真实的时间在这里等了，一个假的时间模拟一下就可以了。
+
+```
+import { timer1 } from './timer';
+
+jest.useFakeTimers();
+
+test('测试mock timer', () => {
+    const callback = jest.fn();
+    timer1(callback);
+    jest.runAllTimers(); // 在这里，把定时器里面回调立即执行完
+    expect(callback).toHaveBeenCalledTimes(1); // 期望回调被调用一次
+})
+```
+
+### lesson-9 对dom操作进行测试
+
+node是没有dom的，jest在node环境下模拟了一套dom的api

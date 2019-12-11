@@ -160,3 +160,12 @@ test('测试mock timer', () => {
 ### lesson-9 对dom操作进行测试
 
 node是没有dom的，jest在node环境下模拟了一套dom的api
+
+### vue-todolist
+
+```
+// shallowMount是浅渲染,只会渲染HelloWorld组件，而不会渲染HelloWorld组件中的子组件(shallowMount更适合单元测试，反之mount更适合集成测试)
+const wrapper = shallowMount(HelloWorld, {
+    propsData: { msg }
+})
+```

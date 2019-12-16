@@ -1,11 +1,15 @@
 <template>
   <div>
-    to do list
+    <vHeader />
   </div>
 </template>
 
 <script>
+import vHeader from './components/header'
 export default {
+  components: {
+    vHeader
+  },
   data () {
     return {}
   }

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`测试header.vue header组件css发生变化时，提示 1`] = `
+<div class="header">
+  <section><label for="ToDoList">ToDoList</label> <input type="text"></section>
+</div>
+`;

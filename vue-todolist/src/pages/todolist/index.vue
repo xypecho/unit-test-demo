@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vHeader />
+    <vHeader @add='add' />
   </div>
 </template>
 
@@ -11,7 +11,14 @@ export default {
     vHeader
   },
   data () {
-    return {}
+    return {
+      undolist: []
+    }
+  },
+  methods: {
+    add (inputValue) {
+      this.undolist.push(inputValue)
+    }
   }
 }
 </script>

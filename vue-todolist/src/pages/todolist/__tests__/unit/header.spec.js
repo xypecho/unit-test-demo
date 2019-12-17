@@ -3,9 +3,10 @@ import header from '@/pages/todolist/components/header.vue'
 
 describe('测试header.vue', () => {
   it('header组件css发生变化时，提示', () => {
-    const wrapper = shallowMount(header);
-    expect(wrapper).toMatchSnapshot();
+    const wrapper = shallowMount(header)
+    expect(wrapper).toMatchSnapshot()
   })
+
   it('测试是否存在input', () => {
     const wrapper = shallowMount(header)
     const input = wrapper.find('input[type="text"]')

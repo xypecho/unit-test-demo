@@ -15,14 +15,14 @@ describe('Todolist.vue', () => {
     const header = wrapper.find(vHeader)
     header.vm.$emit('add', '呆呆')
     const undolist = wrapper.vm.$data.undolist
-    expect(undolist[0]).toBe('呆呆')
+    expect(undolist[0]).toEqual({ status: 'p', value: '呆呆' })
   })
 
   it('todolist调用undolist，应该传递list参数', () => {
     const wrapper = shallowMount(Todolist)
     const Undolist = wrapper.find(undolist)
-    const list = Undolist.props('list');
-    expect(list).toBeTruthy(); //传递的list参数应该是存在的
+    const list = Undolist.props('list')
+    expect(list).toBeTruthy() // 传递的list参数应该是存在的
   })
 
   it('todolist监听到undolist派发的delete事件时，会减少一个内容', () => {
@@ -38,7 +38,7 @@ describe('Todolist.vue', () => {
     wrapper.setData({
       undolist: [1, 2, 3]
     })
-    wrapper.vm.deleteItem(1);
+    wrapper.vm.deleteItem(1)
     expect(wrapper.vm.$data.undolist).toEqual([1, 3])
   })
 })

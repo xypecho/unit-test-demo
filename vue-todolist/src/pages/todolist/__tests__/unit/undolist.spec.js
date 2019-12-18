@@ -37,4 +37,19 @@ describe('测试undolist.vue', () => {
     expect(wrapper.emitted().deleteItem).toBeTruthy()
     expect(wrapper.emitted().deleteItem[0][0]).toBe(1) // 点击第二个删除按钮传的索引值应该是1
   })
+
+  it('undolist中的input变化时，向外派发handlechange事件', () => {
+    const wrapper = shallowMount(undolist, {
+      propsData: {
+        list: [
+          { status: 'input', value: 1 },
+          { status: 'p', value: 2 },
+          { status: 'p', value: 3 }
+        ]
+      }
+    })
+    const inputElem = wrapper.findAll('input[type="text"]').at(0)
+    inputElem.trigger('change')
+    expect(wrapper.emitted().hanleChange).toBeTruthy() // 期望change事件触发
+  })
 })

@@ -4,9 +4,10 @@
       <span class="count">{{ list.length }}</span>
     </h2>
     <ol>
-      <li class="item" v-for="(item,index) in list" :key="index">
-        <input type="checkbox">
-        <p>{{ item }}</p>
+      <li class="item" v-for="(item,index) in list" :key="item.value">
+        <input class="checkbox" type="checkbox">
+        <p v-if="item.status === 'p'" @dblclick="changeStatus(index)">{{ item.value }}</p>
+        <input v-else type="text" :value="item.value" @blur="changeInputStatus(index)" @change="hanleChange($event,index)">
         <a class="deleteButtons" @click="deleteItem(index)" href="javascript:;">-</a>
       </li>
     </ol>
@@ -27,6 +28,15 @@ export default {
   methods: {
     deleteItem (index) {
       this.$emit('deleteItem', index)
+    },
+    changeStatus (index) {
+      this.$emit('changeItemStatus', index)
+    },
+    changeInputStatus (index) {
+      this.$emit('changeInputStatus', index)
+    },
+    hanleChange (e, index) {
+      this.$emit('hanleChange', e.target.value, index)
     }
   }
 }
@@ -68,7 +78,7 @@ export default {
       border-left: 5px solid #629A9C;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
 
-      input {
+      .checkbox {
         position: absolute;
         top: 2px;
         left: 10px;
@@ -77,7 +87,7 @@ export default {
         cursor: pointer;
       }
 
-      p {
+      p, input {
         margin: 0;
       }
 

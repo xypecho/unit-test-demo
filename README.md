@@ -169,3 +169,7 @@ const wrapper = shallowMount(HelloWorld, {
     propsData: { msg }
 })
 ```
+
+### 测试覆盖来
+
+测试覆盖率：测试的代码占业务代码比例

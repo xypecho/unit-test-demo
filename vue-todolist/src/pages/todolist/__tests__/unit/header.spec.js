@@ -41,6 +41,6 @@ describe('测试header.vue', () => {
     input.setValue('123')
     input.trigger('keyup.enter')
     expect(wrapper.emitted().add).toBeTruthy()
-    expect(wrapper.vm.$data.inputValue).toBe('')
+    expect(wrapper.vm.inputValue).toBe('')
   })
 })

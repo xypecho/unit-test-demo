@@ -5,11 +5,10 @@
     </h2>
     <ol>
       <li class="item" v-for="(item,index) in list" :key="item.value" draggable="true" v-drag>
-        {{ item.value }}
-        <!-- <input class="checkbox" type="checkbox" v-model="item.checked" @change="handleCheckboxChange($event,index)">
+        <input class="checkbox" type="checkbox" v-model="item.checked" @change="handleCheckboxChange($event,index)">
         <p v-if="item.status === 'p'" @dblclick="changeStatus(index)">{{ item.value }}</p>
         <input v-else type="text" :value="item.value" @blur="changeInputStatus(index)" @change="hanleChange($event,index)">
-        <a class="deleteButtons" @click="deleteItem(index)" href="javascript:;">-</a> -->
+        <a class="deleteButtons" @click="deleteItem(index)" href="javascript:;">-</a>
       </li>
     </ol>
   </div>

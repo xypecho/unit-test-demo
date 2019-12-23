@@ -14,9 +14,10 @@ const _index = (el) => {
   return index
 }
 
+let draging = null // 当前正在拖动的元素对象
+
 const drag = Vue.directive('drag', {
   inserted: function (el) {
-    let draging = null // 当前正在拖动的元素对象
 
     // 当拖动元素或选中的文本时触发
     el.ondragstart = e => {
@@ -26,7 +27,7 @@ const drag = Vue.directive('drag', {
     // 当元素或选中的文本被拖到一个可释放目标上时触发，与ondragenter的区别在于，ondragenter是拖拽的过程中经过可以被拖拽的元素就会触发，而ondragover拖动到可以拖动的元素才会触发
     el.ondragover = e => {
       e.preventDefault()
-      const target = e.target // 当前可以拖动的元素的对象
+      const target = e.target.parentNode // 当前可以拖动的元素的对象
       if (target.nodeName === 'LI' && target !== draging) {
         if (_index(draging) < _index(target)) {
           target.parentNode.insertBefore(draging, target.nextSibling);
@@ -35,10 +36,6 @@ const drag = Vue.directive('drag', {
         }
       }
     }
-    // // 当拖拽操作结束时触发 (比如松开鼠标按键或敲“Esc”键)
-    // el.ondragend = e => {
-    //     console.log('结束')
-    // }
   }
 })
 

@@ -18,7 +18,6 @@ let draging = null // 当前正在拖动的元素对象
 
 const drag = Vue.directive('drag', {
   inserted: function (el) {
-
     // 当拖动元素或选中的文本时触发
     el.ondragstart = e => {
       draging = e.target
@@ -30,9 +29,9 @@ const drag = Vue.directive('drag', {
       const target = e.target.parentNode // 当前可以拖动的元素的对象
       if (target.nodeName === 'LI' && target !== draging) {
         if (_index(draging) < _index(target)) {
-          target.parentNode.insertBefore(draging, target.nextSibling);
+          target.parentNode.insertBefore(draging, target.nextSibling)
         } else {
-          target.parentNode.insertBefore(draging, target);
+          target.parentNode.insertBefore(draging, target)
         }
       }
     }

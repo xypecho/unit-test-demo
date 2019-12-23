@@ -21,7 +21,7 @@ export default {
   },
   data () {
     return {
-      undolist: [{ value: 1, status: 'p', checked: true }, { value: 2, status: 'p', checked: true }, { value: 3, status: 'p', checked: true }],
+      undolist: [],
       dolist: []
     }
   },

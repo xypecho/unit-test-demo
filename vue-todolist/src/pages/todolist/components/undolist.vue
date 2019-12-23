@@ -3,12 +3,13 @@
     <h2>正在进行
       <span class="count">{{ list.length }}</span>
     </h2>
-    <ol @dragstart="onDragStart" @dragover="onDragOver" @dragend="onDragEnd">
-      <li class="item" v-for="(item,index) in list" :key="item.value" draggable="true">
-        <input class="checkbox" type="checkbox" v-model="item.checked" @change="handleCheckboxChange($event,index)">
+    <ol>
+      <li class="item" v-for="(item,index) in list" :key="item.value" draggable="true" v-drag>
+        {{ item.value }}
+        <!-- <input class="checkbox" type="checkbox" v-model="item.checked" @change="handleCheckboxChange($event,index)">
         <p v-if="item.status === 'p'" @dblclick="changeStatus(index)">{{ item.value }}</p>
         <input v-else type="text" :value="item.value" @blur="changeInputStatus(index)" @change="hanleChange($event,index)">
-        <a class="deleteButtons" @click="deleteItem(index)" href="javascript:;">-</a>
+        <a class="deleteButtons" @click="deleteItem(index)" href="javascript:;">-</a> -->
       </li>
     </ol>
   </div>
@@ -22,43 +23,24 @@ export default {
       default: () => []
     }
   },
-  data() {
-    return {
-      draging: null // 正在拖拽的dom
-    };
-  },
   methods: {
-    deleteItem(index) {
-      this.$emit("deleteItem", index);
+    deleteItem (index) {
+      this.$emit('deleteItem', index)
     },
-    changeStatus(index) {
-      this.$emit("changeItemStatus", index);
+    changeStatus (index) {
+      this.$emit('changeItemStatus', index)
     },
-    changeInputStatus(index) {
-      this.$emit("changeInputStatus", index);
+    changeInputStatus (index) {
+      this.$emit('changeInputStatus', index)
     },
-    hanleChange(e, index) {
-      this.$emit("hanleChange", e.target.value, index);
+    hanleChange (e, index) {
+      this.$emit('hanleChange', e.target.value, index)
     },
-    handleCheckboxChange(e, index) {
-      this.$emit("handleCheckboxChange", e.target.checked, index);
-    },
-    onDragStart(e) {
-      this.draging = e.target;
-    },
-    onDragOver(e) {
-      let dom = e.target;
-      console.log(dom.nodeName);
-      if (dom.nodeName === "P" && dom !== this.draging) {
-        dom.parentNode.insertBefore(this.draging, dom.nextSibling);
-      }
-    },
-    onDragEnd(e) {
-      console.log("drag end");
-      console.log(e);
+    handleCheckboxChange (e, index) {
+      this.$emit('handleCheckboxChange', e.target.checked, index)
     }
   }
-};
+}
 </script>
 
 <style scoped lang="stylus">

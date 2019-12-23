@@ -1,8 +1,8 @@
 module.exports = {
-    devServer: {
-        overlay: {
-            warnings: true,
-            errors: false
-        }
+  devServer: {
+    overlay: {
+      warnings: true,
+      errors: false
     }
+  }
 }

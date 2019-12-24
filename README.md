@@ -1,7 +1,9 @@
 ### 0、 名词解释
 
 TDD(Test Driven Development)：即测试驱动开发 ，先写测试用例，再写代码
+
 BDD(Behavior Driven Development)：即行为驱动开发，先写代码，然后去写测试
+
 测试覆盖率：测试的代码占业务代码比例
 
 ### lesson-1 实现一个最简单的单元测试
